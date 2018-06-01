@@ -17,14 +17,14 @@
 			url: 		lien,
 			dataType:   "json",
 			data :{ 
-				t : search,
+				i : search,
 				apikey :"efdc2275"
 			},
 			success:    function(info){
 				console.log(info);
 				
 				$('#demo').html(info.Year);
-				$('#img').attr("src",info.Poster);
+				$('#img').attr("src",info.imdbID);
 			}
 					
 		}).fail(function(){alert('error')});
