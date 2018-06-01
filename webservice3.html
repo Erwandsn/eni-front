@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script>
+	$(function(){
+
+		$("#btn").click(function(){
+
+		var search = $('#search').val();
+
+		var lien ='http://www.omdbapi.com/';
+
+		$.ajax({
+			type: "GET",
+			url: 		lien,
+			dataType:   "json",
+			data :{ 
+				t : search,
+				apikey :"efdc2275"
+			},
+			success:    function(info){
+				console.log(info);
+				
+				$('#demo').html(info.Year);
+				$('#img').attr("src",info.Poster);
+			}
+					
+		}).fail(function(){alert('error')});
+		});
+});		
+
+</script>
+</head>
+<body>
+
+	<input id=search>
+	<button id=btn>OK</button>
+	<div id=demo></div>
+	<img id="img">
+</body>
+</html>
