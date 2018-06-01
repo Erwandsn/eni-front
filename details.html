@@ -42,51 +42,44 @@
         </div>
       </div>
     </nav>
-
+	<!--<input type="search" class="form-control" id="search" aria-describedby="search" placeholder="Recherche" style="margin-top:14%">
+	<button id=btn class="btn btn-success">OK</button>
+	  <div id=demo></div>-->
     <!-- Page Content -->
     <div class="container">
-
+	
       <div class="row">
 
         <!-- Post Content Column -->
         <div class="col-lg-8">
 
           <!-- Title -->
-          <h1 class="mt-4">Post Title</h1>
+          <h1 class="mt-4" id="title"></h1>
 
           <!-- Author -->
-          <p class="lead">
+          <p class="lead" id="director">
             by
-            <a href="#">Start Bootstrap</a>
+            <a href="#"></a>
           </p>
 
           <hr>
 
           <!-- Date/Time -->
-          <p>Posted on January 1, 2018 at 12:00 PM</p>
+          <p id="released"></p>
 
-          <hr>
-
-
-          <hr>
 
           <!-- Post Content -->
-          <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?</p>
-
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.</p>
-
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, doloribus, dolorem iusto blanditiis unde eius illum consequuntur neque dicta incidunt ullam ea hic porro optio ratione repellat perspiciatis. Enim, iure!</p>
-
+          <p class="lead" id="plot"></p>
           <blockquote class="blockquote">
-            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-            <footer class="blockquote-footer">Someone famous in
-              <cite title="Source Title">Source Title</cite>
+            <p class="mb-0" id="gerne"></p>
+            <footer class="blockquote-footer"> 
+              <cite title="Source Title" >Acteurs</cite>
             </footer>
           </blockquote>
 
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nostrum, aliquid, animi, ut quas placeat totam sunt tempora commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem obcaecati?</p>
+          <p id="actors"></p>
 
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dolor quis. Sunt, ut, explicabo, aliquam tenetur ratione tempore quidem voluptates cupiditate voluptas illo saepe quaerat numquam recusandae? Qui, necessitatibus, est!</p>
+          <p></p>
 
           <hr>
 
@@ -94,7 +87,7 @@
 
         <!-- Sidebar Widgets Column -->
         <div class="col-md-4">
-            <img class="img-fluid rounded" style="margin-top: 200px;" src="http://placehold.it/300x450" alt="">
+            <img class="img-fluid rounded" style="margin-top: 7px; margin-bottom:200px;" id="img">
         </div>
           
                 
@@ -122,3 +115,46 @@
   </body>
 
 </html>
+
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script>
+	$(function(){
+
+		$("#btn").click(function(){
+
+		var search = $('#search').val();
+
+		var lien ='http://www.omdbapi.com/';
+
+		$.ajax({
+			type: "GET",
+			url: 		lien,
+			dataType:   "json",
+			data :{ 
+				i : search,
+				apikey :"efdc2275"
+			},
+			success:    function(info){
+				console.log(info);
+				
+				
+				$('#demo').html(info.Year);
+				$('#img').attr("src",info.Poster);
+				$('#title').html(info.Title);
+				$('#year').html(info.Year);
+				$('#released').html(info.Released);
+				$('#genre').html(info.Genre);
+				$('#director').html(info.Director);
+				$('#actors').html(info.Actors);
+				$('#plot').html(info.Plot);
+			}
+					
+		}).fail(function(){alert('error')});
+		});
+});		
+
+</script>
+
+
+
+
