@@ -1,9 +1,4 @@
 //Fonctions
-
-
-
-
-
 $(function(){
 	$("#btnSearch").click(function(){	
 		var search = $('#iptSearch').val();
@@ -32,8 +27,8 @@ $(function(){
 						}else{
 							str+= '<a href="#"><img class="card-img-top" src="images/affiche_vide.jpg" alt=""></a> <div class="card-body"><h4 class="card-title">';
 						}
-						str+= '<a href="details.html?&id='+film.imdbID+'">'+film.Title+'</a></h4>';
-						str+= ' <p class="card-text">'+film.Released+'</p></div></div></div>';
+						str+= '<a href="details.html?id='+film.imdbID+'">'+film.Title+'</a></h4>';
+						str+= ' <p class="card-text">'+film.Year+'</p></div></div></div>';
 						str += '</tr>';
 						bigstr += str;
 						i++;
